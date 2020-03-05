@@ -1,0 +1,10 @@
+<ion-content padding>
+    <div class="menu-header">
+        <ion-icon ios="ios-arrow-round-back" md="md-arrow-round-back" class="close" (click)="close()"></ion-icon>
+        <h2 class="bold center">
+            {{assuntos.nome}}
+        </h2>
+    </div>
+    <div class="body-details" [innerHTML]="assuntos.descricao">
+    </div>
+</ion-content>

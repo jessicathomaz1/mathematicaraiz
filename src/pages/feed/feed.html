@@ -1,0 +1,98 @@
+<ion-content *ngIf="user">
+    <!-- REFRESH -->
+    <ion-refresher (ionRefresh)="refresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <!-- HEADER -->
+    <div class="feed-header">
+        <!-- WELCOME MESSAGE -->
+        <h4 class="eggshell regular">
+            Olá, {{user.name}}!
+        </h4>
+
+        <!-- DEFAULT AVATAR -->
+        <div *ngIf="!user.avatar" class="avatarPos avatar">
+        </div>
+        <!-- USER AVATAR -->
+        <div *ngIf="user.avatar" class="avatarPos" [ngStyle]="{ 'background-image': 'url(' + user.avatar + ')'}" (click)="openProfiles()">
+        </div>
+    </div>
+
+    <!-- SUBHEADER -->
+    <div class="feed-subheader">
+        <!-- ADDRESS -->
+        <p class="black bold" *ngIf="!user.address" (click)="openProfiles()">
+            Atualize seu perfil!
+        </p>
+        <p class=" black bold " *ngIf="user.address ">
+            {{user.address}}
+        </p>
+    </div>
+
+    <!-- BODY -->
+    <div class="no-padding padding-bottom-0 ">
+        <!-- FEATURED TEXT -->
+        <h3 class="center black bold ">
+            Por onde vamos começar?
+        </h3>
+
+        <ion-slides pager class="customSlides ">
+            <!-- SLIDE ITEMS -->
+            <ion-slide class="customSlide1">
+                <div class="slide-zoom" (click)="openAssuntos()">
+                    <div class="slideInfo">
+                        <p class="slidetextDescription center ">Explore os assuntos que <br>mais caem nas provas!</p>
+                    </div>
+                    <img class="addIcon" src="assets/imgs/add.png">
+                </div>
+            </ion-slide>
+            <ion-slide class="customSlide2 left20 ">
+                <div class="slide-zoom" (click)="openQuestoes()">
+                    <div class="slideInfo">
+                        <p class="slidetextDescription center ">Resolva as questões e tire <br>suas dúvidas!</p>
+                    </div>
+                    <img class="addIcon" src="assets/imgs/add.png">
+                </div>
+            </ion-slide>
+            <ion-slide class="customSlide3 left20 ">
+                <div class="slide-zoom" (click)="openAssuntos()">
+                    <div class="slideInfo ">
+                        <p class="slidetextDescription center ">Fique informado sobre os <br>concursos e editais!</p>
+                    </div>
+                    <img class="addIcon" src="assets/imgs/add.png">
+                </div>
+            </ion-slide>
+        </ion-slides>
+
+        <!-- FEATURED TEXT -->
+        <h3 class="padding-top-50-percent black bold mg-top-60 padding-20 ">
+            Estatística
+        </h3>
+
+        <!-- AMOUNT -->
+        <div class="margin-20 amountContainer ">
+            <h1 class="red bold no-margin font40 " style="display: inline-block ">
+                {{toPrice(amount)}}
+            </h1>
+
+            <div class="amountRight ">
+                <h1 class="red bold no-margin font40 " style="display: inline-block ">
+                    {{items.length}}
+                </h1>
+                <h4 class="red regular no-margin " style="display: inline-block ">
+                    Acertos
+                </h4>
+            </div>
+        </div>
+
+        <!-- SHOW ALL OPTIONS -->
+        <div class="margin-20 showAllOptions bold center mg-top-10 " (click)="openCart() ">
+            Abrir estatística
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+</ion-content>
